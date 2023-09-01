@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title></title>
+</head>
+
+<body>
+	<section>
+		<div th:if="${session.message}" th:classAppend="${session.message.type}" class="alert  text-center" role="alert">
+		<p th:text="${session.message.content}"></p>
+		<th:block  th:text="${@homeServices.removeMessageFromSession()}"></th:block>
+	</div>
+		<div class="container">
+			<div class="row bg-info mt-5 pl-5 pb-4 font-weight-bold">
+				<!--signup from-->
+				<div id="signup-img" class="col-md-5 mt-4 mr-0 ">
+					<!--img-->
+				</div>
+				<div id="signup-from" class="col-md-5 mt-4 ml-0 pb-4 ">
+					<h2 class="text-center mt-3 mb-3">Register here</h2>
+					<form novalidate th:action="@{/do-register}" method="post" th:object="${user}">
+						<input type="text" name="name" class="form-control mt-4 mr-1 ml-1" id="formGroupExampleInput"
+							placeholder="Name" th:field="${user.name}"
+							th:classAppend="${#fields.hasErrors('name')?'is-invalid':''}">
+						<div class="invalid-feedback" th:each="e:${#fields.errors('name')}" th:text="${e}">
+
+						</div>
+						<input required type="email" class="form-control mt-4 mr-1 ml-1" id="formGroupExampleInput"
+							placeholder="Email" th:field="${user.email}"
+							th:classAppend="${#fields.hasErrors('email')?'is-invalid':''}">
+						<div class="invalid-feedback" th:each="e:${#fields.errors('email')}" th:text="${e}">
+
+						</div>
+						<input required type="password" class="form-control mt-4 mr-1 ml-1" id="formGroupExampleInput"
+							placeholder="Password" th:field="${user.password}"
+							th:classAppend="${#fields.hasErrors('password')?'is-invalid':''}">
+						<div class="invalid-feedback" th:each="e:${#fields.errors('password')}" th:text="${e}">
+
+						</div>
+						<input type="file" class="form-control mt-4 mr-1 ml-1" id="inputGroupFile01"
+							th:field="${user.imageUrl}">
+						<button  type="submit" class="btn mt-4 ml-1 mr-0 btn-info form-control text-lg 							p-2">
+							REGISTER
+						</button>
+
+						<div class="separator">
+							<hr class="mt-5">
+							<p class="or btn btn-light  p-1 pl-1 pr-1 ">OR</p>
+						</div>
+						<div class="logo-login">
+							<span><i id="google" class='bx bxl-google btn'></i></span>
+							<span><i id="facebook" class='bx bxl-facebook btn'></i></span>
+						</div>
+						<p class="text-center font-weight-normal">Already have an account?<a th:href="@{/user/index}" href="#">signin</a>
+						</p>
+
+					</form>
+				</div>
+				
+
+				<!-- Modal -->
+				<!--data-toggle="modal" data-target="#exampleModalCenter"-->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								...
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+	</section>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

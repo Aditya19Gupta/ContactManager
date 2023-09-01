@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	<!-- Required meta tags -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title th:text="${title}"></title>
+	<link rel="icon" href="/img/title_logo.png" type="image/png">
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+	<!--navbar-->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info">
+		<a class="navbar-brand font-weight-bold " id="logo-text" href="/">SmartContactManager</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto mr-5 font-weight-bold text-white">
+				<li class="nav-item active mr-5">
+					<a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+				</li>
+
+				<li class="nav-item dropdown mr-5 active">
+					<a th:href="@{/user/account}" class="nav-link" th:text="${user.name}" href="#" aria-haspopup="true" aria-expanded="false">
+
+					</a>
+
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link " th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+
+	<!--end navbar-->
+	<!--start-sidebar-->
+	<div class="sidebar">
+
+		<span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+		<div class="pt-5 "></div>
+		<a th:href="@{/user/index}"><i class='bx bxs-user'></i> Profile</a>
+		<a th:href="@{/user/contacts}"><i class='bx bxs-contact'></i> Contacts</a>
+		<a th:href="@{/user/add_contact}"><i class='bx bxs-user-plus'></i> Add Contact</a>
+		<a th:href="@{/user/account}"><i class='bx bxs-cog'></i> Account Setting</a>
+		<a href="/logout"><i class='bx bxs-user-minus'></i> Logout</a>
+		<hr>
+
+	</div>
+
+
+
+
+
+
+
+	<div class="content">
+		<a onclick="toggleSidebar()" class="btn m-0 p-0 text-lg"><i class='bx bx-menu' ></i></a>
+
+		
+
+	</div>
+
+
+
+	<!--end-sidebar-->
+	<div th:replace="${content}">
+		Hello, world!
+
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+	<script th:src="@{/js/script.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+
+</html>

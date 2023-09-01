@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/user_base::layout(~{::section})}">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+	<section class="content">
+		<a onclick="toggleSidebar()" class="btn m-0 p-0 text-lg"><i class='bx bx-menu' style="font-size: 3rem;"></i></a>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="col-sm-6">
+					<div class="card my-4 ml-5 mt-5" style="width: 32rem;height: 10%; border-radius: 15px;">
+						<div class="card-header bg-info"
+							style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+							<h4>Welcome <span th:text="${user.name}"></span></h4>
+						</div>
+						<div class="card-body">
+							<h4 class="card-text text-info mt-2">
+								<span th:text="${user.name}"></span> start adding contact here on cloud..
+							</h4>
+							<a th:href="@{/user/add_contact}" class="btn btn-outline-info my-3">Add contact</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6" style="margin-left: -2rem;">
+				<div class="card my-4 ml-5 mt-5" style="height:15.4rem;width: 32rem; border-radius: 15px;">
+					<div class="card-header bg-info"
+						style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+						<h4>Welcome <span th:text="${user.name}"></span></h4>
+					</div>
+					<div class="card-body">
+						<h4 class="card-text text-info mt-4">
+							<span th:text="${user.name}"></span> see your contact..
+						</h4>
+						<a th:href="@{/user/contacts}" class="btn btn-outline-info my-3">Contact</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="card my-4 " style=" border-radius: 15px;margin-left: 5.5%;margin-right: 4.5%;">
+			<div class="card-header bg-info" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+				<h4>Welcome <span th:text="${user.name}"></span></h4>
+			</div>
+			<div class="card-body">
+				<h4 class="card-text text-info my-2">
+					<span th:text="${user.name}"> </span> If you see its beneficial please donate us..
+				</h4>
+				<div class="input-group mb-3 mt-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">&#x20b9;</span>
+					</div>
+					<input id="paymentRupees" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+				</div>
+				
+				<div class="text-center">
+					<button onclick="paymentInitiate()" th:href="@{/user/add_contact}" class="btn btn-outline-success my-1 btn-lg">Donate</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+</body>
+
+</html>
